@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("MVCC_TEST_DB")
+}
+
+model events {
+  id                 Int                  @id @default(autoincrement()) @db.Int
+  name               String               @db.VarChar(255)
+  remaining_slots    Int                  @db.Int
+  event_participants event_participants[]
+}
+
+model event_participants {
+  id        Int    @id @default(autoincrement()) @db.Int
+  user_id   Int    @db.Int
+  event     events @relation(fields: [events_id], references: [id], onDelete: Cascade)
+  events_id Int    @db.Int
+}
