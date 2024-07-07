@@ -11,6 +11,7 @@ model events {
   id                 Int                  @id @default(autoincrement()) @db.Int
   name               String               @db.VarChar(255)
   remaining_slots    Int                  @db.Int
+  version            Int                  @default(1) @db.Int
   event_participants event_participants[]
 }
 

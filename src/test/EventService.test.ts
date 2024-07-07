@@ -1,9 +1,9 @@
 
 // Mocking the database client
-import EventService from "./sameTime/EventService";
-import database from "./client/database";
+import EventService from "../sameTime/EventService";
+import database from "../client/database";
 
-jest.mock('./client/database', () => {
+jest.mock('../client/database', () => {
     return {
         events: {
             findUnique: jest.fn(),
